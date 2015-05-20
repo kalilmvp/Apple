@@ -12,9 +12,14 @@ protocol AddAMealDelegate {
     func add(meal:Meal)
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+protocol AddAnItemDelegate {
+    func addNew(item:Item)
+}
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddAnItemDelegate {
     @IBOutlet var nameField:UITextField!;
     @IBOutlet var happinessField:UITextField!;
+    @IBOutlet var tableView:UITableView!;
     
     var delegate:AddAMealDelegate?
     
@@ -27,34 +32,75 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var selected = Array<Item>()
     
+    override func viewDidLoad() {
+        let newItemButton = UIBarButtonItem(title: "new item", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("showNewItem"))
+        navigationItem.rightBarButtonItem = newItemButton
+    }
+    
     @IBAction func add() {
         println("Button pressed!!");
         
+        if let meal = getMealFromFrom() {
+            if let meals = delegate {
+                delegate!.add(meal)
+                
+                if let navigation = self.navigationController {
+                    navigation.popViewControllerAnimated(true)
+                } else {
+                    Alert(controller: self).show("Sorry")
+                }
+                
+                return
+            }
+        }
+        
+        Alert(controller: self).show("Sorry")
+    }
+    
+    func getMealFromFrom() -> Meal? {
+        
         if nameField == nil || happinessField == nil {
-            return
+            return nil
         }
         
         let name = nameField!.text;
         let happiness = happinessField!.text.toInt();
         
         if happiness == nil {
-            return
+            return nil
         }
-    
+        
         let meal = Meal(name: name, happiness: happiness!)
         meal.items = selected
         
         println("eaten: \(meal.name) - \(meal.happiness) - \(meal.items)");
         
-        if delegate == nil {
-            return
+        return meal
+    
+    }
+    
+    func addNew(item: Item) {
+        items.append(item)
+        
+        if let table = tableView {
+            tableView.reloadData()
+        } else {
+            Alert(controller: self).show("Sorry", message: "Unexpected Error")
+        }
+    }
+    
+    @IBAction func showNewItem() {
+        println("new item")
+        
+        let newItem = NewItemViewController(delegate: self)
+        
+        if let navigation = navigationController {
+            navigation.pushViewController(newItem, animated: true)
+        } else {
+            Alert(controller: self).show("Sorry")
         }
         
-        delegate!.add(meal)
         
-        if let navigation = self.navigationController {
-            navigation.popViewControllerAnimated(true)
-        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
