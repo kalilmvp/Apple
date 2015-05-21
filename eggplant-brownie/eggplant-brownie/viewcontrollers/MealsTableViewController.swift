@@ -49,7 +49,10 @@ class MealsTableViewController: UITableViewController, AddAMealDelegate {
             let row = indexPath!.row
             let meal = meals[row]
             
-            Alert(controller: self).show(meal.name, message: meal.details())
+            RemoveMealController(controller: self).show(meal, handler: { action in
+                self.meals.removeAtIndex(row)
+                self.tableView.reloadData()
+            })
         }
     }
     
