@@ -23,18 +23,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var delegate:AddAMealDelegate?
     
-    var items = [
-                    Item(name: "Food 1", calories: 1.0),
-                    Item(name: "Food 2", calories: 2.0),
-                    Item(name: "Food 3", calories: 3.0),
-                    Item(name: "Food 4", calories: 4.0),
-    ]
+    var items = Array<Item>()
     
     var selected = Array<Item>()
     
     override func viewDidLoad() {
         let newItemButton = UIBarButtonItem(title: "new item", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("showNewItem"))
         navigationItem.rightBarButtonItem = newItemButton
+        
+        if let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(getArchive()) {
+            self.items = loaded as! Array
+        }
     }
     
     @IBAction func add() {
@@ -83,6 +82,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         items.append(item)
         
         if let table = tableView {
+            NSKeyedArchiver.archiveRootObject(self.items, toFile: getArchive())
             tableView.reloadData()
         } else {
             Alert(controller: self).show("Sorry", message: "Unexpected Error")
@@ -128,5 +128,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 selected.removeAtIndex(position)
             }
         }
+    }
+    
+    func getArchive() -> String {
+        let usersDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let dir = usersDir[0] as! String;
+        
+        return "\(dir)/eggplant-brownie-items"
     }
 }

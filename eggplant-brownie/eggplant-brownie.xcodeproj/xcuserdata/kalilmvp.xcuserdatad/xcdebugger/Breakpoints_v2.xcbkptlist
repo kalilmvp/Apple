@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eggplant-brownie/viewcontrollers/MealsTableViewController.swift"
-            timestampString = "453844343.560198"
+            timestampString = "453995927.831873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "showDetails(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eggplant-brownie/viewcontrollers/ViewController.swift"
-            timestampString = "453847770.224839"
+            timestampString = "453996368.52921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "getMealFromFrom()"
             landmarkType = "5">
          </BreakpointContent>
