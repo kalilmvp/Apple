@@ -12,9 +12,7 @@ class MealsTableViewController: UITableViewController, AddAMealDelegate {
     var meals = Array<Meal>()
     
     override func viewDidLoad() {
-        if let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(getArchive()) {
-            self.meals = loaded as! Array
-        }
+        self.meals = Dao().loadMeals()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,15 +36,8 @@ class MealsTableViewController: UITableViewController, AddAMealDelegate {
     func add(meal:Meal) {
         println("Meal added: \(meal)")
         meals.append(meal)
-        NSKeyedArchiver.archiveRootObject(meals, toFile: getArchive())
+        Dao().saveMeals(self.meals)
         tableView.reloadData()
-    }
-    
-    func getArchive() -> String {
-        let usersDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let dir = usersDir[0] as! String;
-        
-        return "\(dir)/eggplant-brownie-meals"
     }
     
     func showDetails(recognizer:UILongPressGestureRecognizer) {

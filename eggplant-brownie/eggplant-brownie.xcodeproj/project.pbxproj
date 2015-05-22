@@ -12,6 +12,7 @@
 		B759954D1B0A878D009DCC7E /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759954C1B0A878D009DCC7E /* NewItemViewController.swift */; };
 		B759954F1B0D2513009DCC7E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759954E1B0D2513009DCC7E /* Alert.swift */; };
 		B75995511B0E6C09009DCC7E /* RemoveMealController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75995501B0E6C09009DCC7E /* RemoveMealController.swift */; };
+		B75995531B0F6FF8009DCC7E /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75995521B0F6FF8009DCC7E /* Dao.swift */; };
 		B7A35BE51AF963490084F3BC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A35BE41AF963490084F3BC /* Meal.swift */; };
 		B7A35BE71AF963530084F3BC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A35BE61AF963530084F3BC /* Item.swift */; };
 		B7A35BE91AF964620084F3BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A35BE81AF964620084F3BC /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 		B759954C1B0A878D009DCC7E /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		B759954E1B0D2513009DCC7E /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B75995501B0E6C09009DCC7E /* RemoveMealController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveMealController.swift; sourceTree = "<group>"; };
+		B75995521B0F6FF8009DCC7E /* Dao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
 		B7A35BE41AF963490084F3BC /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		B7A35BE61AF963530084F3BC /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B7A35BE81AF964620084F3BC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				B7A35BE41AF963490084F3BC /* Meal.swift */,
 				B7A35BE61AF963530084F3BC /* Item.swift */,
+				B75995521B0F6FF8009DCC7E /* Dao.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				B7A35BE51AF963490084F3BC /* Meal.swift in Sources */,
 				B7A35BE91AF964620084F3BC /* ViewController.swift in Sources */,
 				B7DD6DC51AF7F72500A97861 /* AppDelegate.swift in Sources */,
+				B75995531B0F6FF8009DCC7E /* Dao.swift in Sources */,
 				B759954D1B0A878D009DCC7E /* NewItemViewController.swift in Sources */,
 				B75995511B0E6C09009DCC7E /* RemoveMealController.swift in Sources */,
 				B759954F1B0D2513009DCC7E /* Alert.swift in Sources */,

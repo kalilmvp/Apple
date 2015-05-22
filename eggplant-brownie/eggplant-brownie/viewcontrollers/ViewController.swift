@@ -31,9 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let newItemButton = UIBarButtonItem(title: "new item", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("showNewItem"))
         navigationItem.rightBarButtonItem = newItemButton
         
-        if let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(getArchive()) {
-            self.items = loaded as! Array
-        }
+        self.items = Dao().loadItems()
+        
     }
     
     @IBAction func add() {
@@ -82,7 +81,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         items.append(item)
         
         if let table = tableView {
-            NSKeyedArchiver.archiveRootObject(self.items, toFile: getArchive())
+            Dao().saveItems(self.items)
             tableView.reloadData()
         } else {
             Alert(controller: self).show("Sorry", message: "Unexpected Error")
@@ -128,12 +127,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 selected.removeAtIndex(position)
             }
         }
-    }
-    
-    func getArchive() -> String {
-        let usersDir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let dir = usersDir[0] as! String;
-        
-        return "\(dir)/eggplant-brownie-items"
     }
 }
